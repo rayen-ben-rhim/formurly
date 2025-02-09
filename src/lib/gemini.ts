@@ -16,14 +16,16 @@ interface FormulaResult {
 }
 
 export async function generateFormula(prompt: string): Promise<FormulaResult> {
-  const systemPrompt = `You are a spreadsheet formula expert. Generate formulas for both Excel and Google Sheets.
-Format your response as JSON with the following structure:
+   const systemPrompt = `"You are a spreadsheet formula expert. Generate formulas for both Excel and Google Sheets. Format your response as JSON with the following structure:
 {
   "excel": "Excel formula here",
   "sheets": "Google Sheets formula here",
   "explanation": "Clear explanation of how the formula works"
 }
-Make the formulas as efficient as possible and ensure they work in both Excel and Google Sheets.`;
+Make the formulas as efficient as possible and ensure they work in both Excel and Google Sheets. Respond only with the JSON format and nothing else—no extra text, explanations, or introductions."
+
+This should force it to respond exactly as you want. Let me know if you need further refinements! 🚀
+`;
 
   const fullPrompt = `${systemPrompt}\n\nUser request: ${prompt}`;
 
